@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./components/card/styles.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CurrentReportContainer from "./components/current report/CurrentReportContainer";
+import PreviousTrim from "./components/Previous Trim/PreviousTrim";
+import Prophecy from "./components/prophecy/Prophecy";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+          <Switch>
+            <Route path="/report" exact component={CurrentReportContainer}/>
+            <Route path="/trim" exact component={PreviousTrim}/>
+            <Route path='/prophecy' exact component={Prophecy}/>
+          </Switch>
+      </Router>
     </div>
   );
 }
