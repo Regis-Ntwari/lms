@@ -3,6 +3,8 @@ import { Col, Table } from "react-bootstrap";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Link } from "react-router-dom";
 import { ProphecyComponent } from "./ProphecyComponent";
+import axios from 'axios'
+import authheader from "../../services/auth.header";
 
 export default class Prophecy extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ export default class Prophecy extends Component {
       id: "",
     };
     this.image = React.createRef()
+    this.submitData = this.submitData.bind(this)
   }
 
   componentDidMount() {
@@ -50,22 +53,18 @@ export default class Prophecy extends Component {
     console.log(id);
   };
 
-  submit = () => {
-      console.log('hey');
-    const book = new FormData()
-    book.append('image', this.image)
-    book.append('name', this.state.name)
-    book.append('author', this.state.author)
-    book.append('id', this.state.id)
-  }
-
-  submitData = () => {
-    console.log('hey there');
-    const book = new FormData()
-    book.append('image', this.image)
-    book.append('name', this.state.name)
-    book.append('author', this.state.author)
-    book.append('id', this.state.id)
+  async submitData(){
+    const URL = ''
+    const imageURL = await axios.post(URL, {
+      headers : authheader()
+    })
+    const book = {
+      name : this.state.name,
+      author : this.state.author,
+      id : this.state.id,
+      image : imageURL
+    }
+    console.log(book);
   }
 
   render() {
@@ -120,6 +119,7 @@ export default class Prophecy extends Component {
                   id={id}
                   image={this.image}
                   handleChange={this.handleChange}
+                  submitData={this.submitData}
                 />
             </Col>
         </Sidebar>

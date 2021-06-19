@@ -58,7 +58,7 @@ export const ProphecyComponent = (props) => {
         <Button
           variant="contained"
           color="primary"
-          onSubmit={() => props.submitData}
+          onClick={() => props.submitData()}
         >
           Add
         </Button>
