@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "40ch",
     },
   },
 }));
@@ -22,7 +22,6 @@ export const ProphecyComponent = (props) => {
       <form className={classes.root} noValidate={false} autoComplete="off">
         <TextField
           name="name"
-          fullWidth
           id="outlined-basic"
           label="Name"
           variant="outlined"
@@ -32,7 +31,6 @@ export const ProphecyComponent = (props) => {
         <br />
         <TextField
           name="author"
-          fullWidth
           id="outlined-basic"
           label="Author"
           variant="outlined"

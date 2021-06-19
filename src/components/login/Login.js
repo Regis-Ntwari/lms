@@ -1,4 +1,6 @@
+import { createBrowserHistory } from "history";
 import React, { Component } from "react";
+import authService from "../../services/auth.service";
 import { LoginComponent } from "./LoginComponent";
 
 export default class Login extends Component {
@@ -19,11 +21,15 @@ handleChange = (event) => {
     })
 }
 submitData() {
-    const user = {
-        email : this.state.email,
-        password : this.state.password
-    }
-    console.log(user);
+    const history = createBrowserHistory();
+    authService.login(this.state.email, this.state.password)
+                    .then((Response) => {
+                        if(Response.data) {
+                            history.push('/lesson')
+                            window.location.reload();
+                        }
+                    })
+
 }
     
   render() {

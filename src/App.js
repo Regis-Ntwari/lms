@@ -7,6 +7,7 @@ import Prophecy from "./components/prophecy/Prophecy";
 import Login from "./components/login/Login";
 import authService from "./services/auth.service";
 import {PrivateRoute} from './components/private route/PrivateRoute'
+import Lesson from "./components/lesson/Lesson";
 
 function App() {
   const isAuthenticated = authService.isAuthenticated();
@@ -19,6 +20,7 @@ function App() {
               path="/report"
               component={CurrentReportContainer}
             />
+            <Route path="/lesson" exact component={Lesson}/>
             <Route path="/trim" exact component={PreviousTrim}/>
             <Route path='/prophecy' exact component={Prophecy}/>
             <Route path="/" exact component={Login}/>
